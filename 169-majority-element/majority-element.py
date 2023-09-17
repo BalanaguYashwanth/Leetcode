@@ -34,5 +34,3 @@ class Solution:
             operation(self,i_index,j_index,counter)
 
         return self.count_value
-
-
