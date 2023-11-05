@@ -6,11 +6,12 @@
 var countBits = function(n) {
     const arr = [0]
 
-    const hasExistsInArray = (num) => {
+    const hasExistsInArray = (num,type) => {
+        const addExtraOne = type == 'odd'? 1 : 0
         if(arr[num] || arr[num]===0){
-            return true
+            arr.push(arr[num]+addExtraOne)
         }else{
-            return false
+           arr.push[num]+addExtraOne
         }
     }
 
@@ -18,21 +19,10 @@ var countBits = function(n) {
     for(let i=1;i<=n;i++){
         if(i%2 == 0){
             const result = parseInt(i/2)
-            if(hasExistsInArray(result)){
-                arr.push(arr[result])
-            }else{
-                arr.push[result]
-            }
+            hasExistsInArray(result, 'even')
         }else{
             const result = parseInt(i/2) 
-            console.log('ar0---->',result,hasExistsInArray(result))
-            if(hasExistsInArray(result)){
-                arr.push(arr[result]+1)
-               
-            }else{
-                arr.push[result+1]
-            }
-           
+            hasExistsInArray(result, 'odd')
         }
     }
     return arr
