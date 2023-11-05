@@ -15,15 +15,10 @@ var countBits = function(n) {
         }
     }
 
-
     for(let i=1;i<=n;i++){
-        if(i%2 == 0){
-            const result = parseInt(i/2)
-            hasExistsInArray(result, 'even')
-        }else{
-            const result = parseInt(i/2) 
-            hasExistsInArray(result, 'odd')
-        }
+        const result = parseInt(i/2)
+        const evenOrOdd = i%2 == 0 ? 'even' : 'odd'
+        hasExistsInArray(result,evenOrOdd)
     }
     return arr
 };
