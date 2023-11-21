@@ -13,7 +13,6 @@ var hasGroupsSizeX = function(deck) {
     }
   
    let arrayValues = Object.values(deckJson)
-   console.log('deckJson---->',arrayValues)
    if(arrayValues.length>1){
     let flag = []
     for(let i=0;i<arrayValues.length-1;i++){
@@ -23,7 +22,6 @@ var hasGroupsSizeX = function(deck) {
      if((arrayValues[i]!==arrayValues[i+1])){
        const max = Math.max(arrayValues[i],arrayValues[i+1])
        const min = Math.min(arrayValues[i],arrayValues[i+1])
-       console.log(max,min,max%min)
        if(max%min!=0 || flag.length>0)
        {
         if(flag.length==0){
@@ -52,7 +50,6 @@ var hasGroupsSizeX = function(deck) {
      }else{
        if(flag.length==0){
          flag.push(arrayValues[i])
-        // flag = arrayValues[i]
        }
      }
    }
