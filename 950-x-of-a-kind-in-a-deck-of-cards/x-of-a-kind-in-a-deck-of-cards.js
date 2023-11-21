@@ -29,11 +29,10 @@ var hasGroupsSizeX = function(deck) {
         if(flag.length==0){
           for(k=2;k<=9;k++){
             if(arrayValues[i]%k==0 && arrayValues[i+1]%k==0){
-              console.log('--k--',k)
               flag.push(k)
               }
             }
-            console.log('flag--->', flag)
+
             if(flag.length==0){
               return false
             }
