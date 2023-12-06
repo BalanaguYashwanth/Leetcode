@@ -4,12 +4,9 @@
  */
 var containsDuplicate = function(nums) {
     nums.sort()
-    const obj={}
-    for(let i=0;i<nums.length;i++){
-        if(nums[i] in obj){
+    for(let i=0;i<nums.length-1;i++){
+        if(nums[i]==nums[i+1]){
             return true
-        }else{
-            obj[nums[i]] = 1
         }
     }
     return false
