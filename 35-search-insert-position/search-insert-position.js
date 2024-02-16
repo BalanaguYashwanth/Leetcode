@@ -12,7 +12,7 @@ var searchInsert = function(nums, target) {
             return mid
         }else if(target < nums[mid]){
             lastPosition = mid - 1
-        }else if(target > nums[mid]){
+        }else{
             firstPosition = mid + 1
         }
     }
