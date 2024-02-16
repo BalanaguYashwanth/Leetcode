@@ -4,34 +4,17 @@
  * @return {number}
  */
 var searchInsert = function(nums, target) {
-    const firstPosition = 0;
-    let temp
-    const lastPosition = nums.length-1;
-    const recall = (firstPosition, lastPosition) => {
-
-        if(firstPosition > lastPosition){
-            return firstPosition
+    let firstPosition = 0;
+    let lastPosition = nums.length-1;
+    while(firstPosition <= lastPosition) {
+        const mid = parseInt((firstPosition + lastPosition)/2)
+        if(target === nums[mid]){
+            return mid
+        }else if(target < nums[mid]){
+            lastPosition = mid - 1
+        }else{
+            firstPosition = mid + 1
         }
-
-        console.log('firstPosition, lastPosition--->',firstPosition, lastPosition)
-        const medianIndex = parseInt((lastPosition + firstPosition)/2)
-        if(target === nums[medianIndex]){
-            return medianIndex
-        }else if(target < nums[medianIndex]){
-            temp = medianIndex
-            if(!(nums[medianIndex-1])){
-                return medianIndex
-            }
-            return recall(medianIndex-1, medianIndex-1)
-        }else if(target > nums[medianIndex]){
-            if(temp === nums[medianIndex]){
-                return medianIndex+1
-            }
-            return recall(medianIndex+1, lastPosition)
-        }
-        
     }
-
-    return recall(firstPosition, lastPosition)
-    
+    return firstPosition
 };
