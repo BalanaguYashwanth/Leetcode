@@ -13,19 +13,15 @@ var romanToInt = function(s) {
             const multiRoman = (s[i]+s[i+1])
             if(multiRoman in roman){
                 result = result + roman[multiRoman]
-                console.log(roman[multiRoman],'multiRoman---',multiRoman,'result---',result)
                 i = i+2
             }else{
-                 console.log('s[i]---',s[i],'roman[s[i]]---',roman[s[i]],'result--',result)
                 result = result + roman[s[i]]
                 i = i + 1
             }
         }else{
-            console.log('s[i]---',s[i],'roman[s[i]]---',roman[s[i]],'result--',result)
             result = result + roman[s[i]]
             i = i + 1
         }
     }
     return result
-    // console.log('result---', result)
 };
