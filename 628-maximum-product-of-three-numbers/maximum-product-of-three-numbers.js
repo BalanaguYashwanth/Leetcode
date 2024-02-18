@@ -15,10 +15,6 @@ var maximumProduct = function(nums) {
         negSum = nums[0]*nums[1]*nums[nums.length-1]
     }
 
-    if(nums.length==3){
-        povFn()
-        return povSum
-    }
     negFn()
     povFn()
 
