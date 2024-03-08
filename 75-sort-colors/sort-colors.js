@@ -3,34 +3,43 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var sortColors = function(nums) {
-    let l = 0
-    let r = nums.length-1
+    let end = nums.length-1
+    let initial = 0
+    if(nums.length<=1){
+        return;
+    }
     let i = 0
-
-    const swap = (start,end) => {
-        const temp = nums[start]
-        nums[start] = nums[end]
-        nums[end] = temp
-    }
-    const other = nums.includes(0) ? 0 : 1 
-    while(i<=r){
-        if(nums[i]==2){
-            swap(i,r)
-            r = r-1
-        }
-        if(nums[i]==1){
-            i = i+1
-        }
-        if(nums[i]==(0)){
-            if(i==l){
-                i = i+1
-                l = l+1
-            }else{
-                swap(l,i)
-                i = i+1
-                l = l+1
+    while(i<nums.length){
+        if(nums[i] === 2){
+           
+            if(i===nums.length-1){
+                return;
             }
+            if(nums[end] === 2){
+                end = end - 1
+                continue
+            }
+           
+            if(i>end){
+                return;
+            }
+            const temp = nums[i]
+            nums[i] = nums[end]
+            nums[end] = temp
+            end = end - 1
+            console.log('end---',end,'i---',i,'nums---', nums)
         }
+        if(nums[i]==0){
+            if((nums[initial] != nums[i]) && (initial!=i)){
+                const temp = nums[initial]
+                nums[initial] = nums[i]
+                nums[i] = temp
+            }
+            initial = initial+1
+        }
+        i = i+1
+        // if(i>=end){
+        //     break
+        // }
     }
-    return nums
 };
