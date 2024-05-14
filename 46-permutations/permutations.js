@@ -10,10 +10,6 @@ var permute = function(nums) {
     finalArr.push(nums)
     const joinedInitialArr = nums.join('')
     total.push(joinedInitialArr)
-
-    const swap = (arr) => {
-
-    }
     
     const settle = (i, arr) => {
        const cloneArr = [...arr]
@@ -35,7 +31,6 @@ var permute = function(nums) {
             if(!total.includes(joinedArr)){
                 total.push(joinedArr)
                 finalArr.push(arr)
-                swap(arr)
             }
         }
     }
