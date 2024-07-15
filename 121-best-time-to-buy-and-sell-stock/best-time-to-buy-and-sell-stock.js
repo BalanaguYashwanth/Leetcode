@@ -9,12 +9,10 @@ var maxProfit = function (prices) {
 
     const recursion = (i, j) => {
         while (j < prices.length) {
-            const diff = prices[j] - prices[i];
-            if (diff > max) {
-                max = diff
-            }
-
-            if (prices[i] > prices[j]) {
+            if (prices[j] > prices[i]) {
+                const diff = prices[j] - prices[i];
+                max = Math.max(max, diff)
+            } else {
                 i = j
             }
             j++
