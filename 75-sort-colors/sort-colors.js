@@ -34,10 +34,6 @@ var sortColors = function (nums) {
             }
         }
         colors[arr[i]] = colors[arr[i]] - 1
-        // if (i+1 == j) {
-        //     return sortColors(arr, i + 1, j + 1)
-        // }
-        // return sortColors(arr, i + 1, j)
         return sortColors(arr, i + 1, i + 2)
     }
 
