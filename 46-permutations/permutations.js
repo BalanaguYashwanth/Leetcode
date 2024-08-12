@@ -2,39 +2,31 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permute = function(nums) {
-    const finalArr = []
-    const total = []
-    let i = 0
+var permute = function (nums) {
+    const res = [];
 
-    finalArr.push(nums)
-    const joinedInitialArr = nums.join('')
-    total.push(joinedInitialArr)
-    
-    const settle = (i, arr) => {
-       const cloneArr = [...arr]
-       if(i<nums.length && arr.length <= nums.length ){
-            if(arr.length>0){
-                if(arr.includes(nums[i])){
-                    i = i+1
-                    return settle(i, [...arr])
-                }
-            }
-
-            arr.push(nums[i])
-            i=i+1
-            settle(0, [...arr])
-            settle(i, cloneArr)
+    const addRemainingElements = (temp) => {
+        if(temp.length == nums.length){
+            res.push(temp)
+            return;
         }
-        if(arr.length === nums.length){
-            const joinedArr = arr.join('')
-            if(!total.includes(joinedArr)){
-                total.push(joinedArr)
-                finalArr.push(arr)
+       for(let i=0; i<nums.length; i++){
+            const newTemp = [...temp]
+            if(!temp.includes(nums[i])){
+                newTemp.push(nums[i])
+                addRemainingElements(newTemp)
             }
+       }
+    }
+
+    const initialize = () => {
+        for (let i = 0; i < nums.length; i++) {
+            const temp = []
+            temp.push(nums[i])
+            addRemainingElements([...temp]);
         }
     }
-    
-    settle(i, [])
-    return finalArr;
+
+    initialize()
+    return res
 };
