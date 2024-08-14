@@ -2,25 +2,27 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var subsets = function(nums) {
-    const finalArr = [[]]
+var subsets = function (nums) {
+    const res = [[]]
 
-    const deepAlgo = (arr, index) => {
-        if(index < nums.length){
-            finalArr.push([...arr, nums[index]])
-            deepAlgo([...arr, nums[index]], index+1)
-            deepAlgo([...arr], index+1)
-        }
-    }
-  
-    const addingElements = (arr, index) => {
-        if(index < nums.length){
-           finalArr.push([nums[index]])
-           deepAlgo([nums[index]], index+1)
-           addingElements(arr, index+1)
+    const expansion = (temp, index) => {
+        res.push([...temp])
+        for (let j = index; j < nums.length; j++) {
+            const newTemp = [...temp]
+            newTemp.push(nums[j])
+            console.log('newTemp----', newTemp)
+            expansion(newTemp, j+1)
         }
     }
 
-    addingElements([], 0)
-    return finalArr;
+    const iteration = () => {
+        for (let i = 0; i < nums.length; i++) {
+            const temp = []
+            temp.push(nums[i])
+            expansion(temp, i + 1)
+        }
+    }
+
+    iteration()
+    return res
 };
