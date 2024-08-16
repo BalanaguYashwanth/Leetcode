@@ -2,14 +2,19 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
-    const obj={1:1,2:2,3:3}
-    if(n>3){
-    for(let i=4;i<=n;i++){
-        obj[i] = obj[i-1] + obj[i-2]
+var climbStairs = function (n) {
+    let prev = 3;
+    let prev2 = 2;
+    let curl;
+    if(n<4){
+        return n
     }
-    }else{
-        return obj[n]
+    for (let i = 4; i <= n; i++) {
+        console.log('before prev2--->', prev2, 'prev---', prev, 'curl--', curl)
+        curl = prev + prev2;
+        prev2 = prev;
+        prev = curl;
+        console.log('after prev2--->', prev2, 'prev---', prev, 'curl--', curl)
     }
-    return obj[n]
+    return curl;
 };
