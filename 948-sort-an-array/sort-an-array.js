@@ -4,55 +4,50 @@
  */
 var sortArray = function (nums) {
 
-    const operate = (arrs) => {
-        if (arrs.length < 2) {
-            return;
+    const sort = (arr) => {
+        if (arr.length < 2) {
+            return
         }
-        // console.log('arrs--->', arrs)
-        const mid = Math.ceil(arrs.length / 2)
-        const left = arrs.slice(0, mid);
-        const right = arrs.slice(mid, arrs.length);
-        operate(left)
-        operate(right)
-        // console.log('left--->', left, 'right--->', right)
-        merge(arrs, left, right)
+        const mid = arr.length / 2
+        const left = arr.slice(0, mid);
+        const right = arr.slice(mid, arr.length);
+        sort(left)
+        sort(right)
+        merge(left, right, arr)
     }
 
-    const merge = (parentArr, left, right) => {
-        let leftIndex = 0;
-        let rightIndex = 0;
-        let mainIndex = 0;
-        // console.log('parentArr-->', parentArr, 'left---', left, 'right---', right)
+    const merge = (left, right, arr) => {
+        let leftIndex = 0
+        let rightIndex = 0
+        let mainIndex = 0
         while (leftIndex < left.length && rightIndex < right.length) {
             if (left[leftIndex] < right[rightIndex]) {
-                parentArr[mainIndex] = left[leftIndex]
-                mainIndex++;
-                leftIndex++;
+                arr[mainIndex] = left[leftIndex];
+                mainIndex = mainIndex + 1;
+                leftIndex = leftIndex + 1;
             } else {
-                parentArr[mainIndex] = right[rightIndex]
-                mainIndex++;
-                rightIndex++;
+                arr[mainIndex] = right[rightIndex]
+                mainIndex = mainIndex + 1;
+                rightIndex = rightIndex + 1;
             }
         }
 
-        while (leftIndex < left.length) {
-            parentArr[mainIndex] = left[leftIndex]
-            mainIndex++;
-            leftIndex++;
+        while(leftIndex < left.length){
+            arr[mainIndex] = left[leftIndex];
+            mainIndex = mainIndex + 1;
+            leftIndex = leftIndex + 1;
         }
 
-        while (rightIndex < right.length) {
-            parentArr[mainIndex] = right[rightIndex]
-            mainIndex++;
-            rightIndex++;
+        while(rightIndex < right.length){
+            arr[mainIndex] = right[rightIndex];
+            mainIndex = mainIndex + 1;
+            rightIndex = rightIndex + 1;
         }
+
         
     }
 
-    operate(nums)
+    sort(nums)
     return nums
 };
-
-
-
 
