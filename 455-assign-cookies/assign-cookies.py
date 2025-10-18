@@ -3,7 +3,6 @@ class Solution:
         g.sort()
         s.sort()
         child_pointer = 0
-        print('--->',s, '--->', s)
         for cookie in s:
             if child_pointer < len(g) and cookie >= g[child_pointer]:
                 child_pointer = child_pointer + 1
