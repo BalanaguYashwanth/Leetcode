@@ -44,5 +44,4 @@ class Solution:
                 self.heap.insert(parent_index, last_child)
                 self.heap.pop()
                 self.perform_min_heap(parent_index=parent_index)
-            # print(self.heap)
         return self.heap[0]
